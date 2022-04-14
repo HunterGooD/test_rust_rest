@@ -1,6 +1,7 @@
 [default]
 address = "0.0.0.0"
-limits = { forms = "64 kB", json = "1 MiB" }
+limits = { forms = "64 kB", json = "1 MiB", data-form="50 MiB" }
+    
 
 [debug]
 port = 8080

@@ -1,10 +1,11 @@
-use rocket::fs::TempFile;
+mod model;
 
-#[post("/upload", data = "<file>")]
-pub async fn uploads_file(mut file: TempFile<'_>)  {
-    // file.persist_to("").await;
-    match file.name() {
-        Some(name) => println!("File name {}", name),
-        None => println!("Not file upload"),
-    }
-} 
+use model::UploadUpdate;
+use rocket::form::Form;
+
+#[post("/upload", data = "<data>")]
+pub async fn uploads_file(mut data: Form<UploadUpdate<'_>>) {
+    // let file_name = data.file.name().unwrap();
+    println!("{:?}", data);
+    // data.file.persist_to(filepath).await.expect("file upload error！");
+}
