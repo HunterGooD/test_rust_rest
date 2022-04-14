@@ -1,1 +1,1 @@
-pub mod greating;
+pub mod greeting;

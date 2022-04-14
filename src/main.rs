@@ -16,9 +16,9 @@ extern crate rocket;
 // }
 
 mod routes;
-use crate::routes::greating;
+use crate::routes::greeting;
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/hello", routes![greating::hello])
+    rocket::build().mount("/hello", routes![greeting::hello])
 }
