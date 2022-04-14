@@ -1,10 +1,21 @@
 #[macro_use]
 extern crate rocket;
 
-// fn main() {
-//     rocket::custom(config::from_env())
-//         .launch();
-// }
+mod routes;
+
+use crate::routes::{classify, greeting, not_found};
+
+// default run rocket
+#[launch]
+fn rocket() -> _ {
+    rocket::build()
+        .mount("/hello", routes![greeting::hello])
+        .mount("/classify", routes![classify::classify])
+        .register("/", catchers![not_found::not_found])
+}
+// others run app rocket
+
+// #1
 // #[rocket::main]
 // async fn main() {
 //     let result = rocket::build()
@@ -15,10 +26,22 @@ extern crate rocket;
 //     println!("Rocket: deorbit.");
 // }
 
-mod routes;
-use crate::routes::greeting;
+// #2 with catch error
+// fn rocket() -> Rocket<Build> {
+//     rocket::build()
+//         // .mount("/", routes![hello, hello]) // uncomment this to get an error
+//         // .mount("/", routes![unmanaged]) // uncomment this to get a sentinel error
+//         .mount("/", routes![hello, forced_error])
+//         .register("/", catchers![general_not_found, default_catcher])
+//         .register("/hello", catchers![hello_not_found])
+//         .register("/hello/Sergio", catchers![sergio_error]) // используется для перехвата роута и ошибок
+// }
 
-#[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/hello", routes![greeting::hello])
-}
+// #[rocket::main]
+// async fn main() {
+//     if let Err(e) = rocket().launch().await {
+//         println!("Whoops! Rocket didn't launch!");
+//         // We drop the error to get a Rocket-formatted panic.
+//         drop(e);
+//     };
+// }
