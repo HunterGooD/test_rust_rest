@@ -13,3 +13,5 @@ port = 9001
 [release]
 port = 9999
 secret_key = "hPRYyVRiMyxpw5sBB1XeCMN1kFsDCqKvBi2QJxBVHQk="
+
+# more config https://github.com/SergioBenitez/Rocket/blob/v0.5-rc/examples/config/Rocket.toml

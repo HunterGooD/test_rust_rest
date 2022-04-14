@@ -3,7 +3,7 @@ extern crate rocket;
 
 mod routes;
 
-use crate::routes::{classify, greeting, not_found};
+use crate::routes::{classify, greeting, not_found, uploads};
 
 // default run rocket
 #[launch]
@@ -11,6 +11,7 @@ fn rocket() -> _ {
     rocket::build()
         .mount("/hello", routes![greeting::hello])
         .mount("/classify", routes![classify::classify])
+        .mount("/file", routes![uploads::uploads_file])
         .register("/", catchers![not_found::not_found])
 }
 // others run app rocket
