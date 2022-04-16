@@ -1,7 +1,8 @@
 mod model;
 
-use model::MyResponse;
 use rocket::serde::json::Json;
+
+use model::MyResponse;
 
 #[post("/")]
 pub fn classify() -> Json<MyResponse> {

@@ -1,6 +1,7 @@
 #[macro_use]
 extern crate rocket;
 
+mod internal;
 mod routes;
 
 use crate::routes::{classify, greeting, not_found, uploads};
