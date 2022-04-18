@@ -1,10 +1,12 @@
 #[macro_use]
 extern crate rocket;
+extern crate dotenv;
+extern crate rocket_multipart_form_data;
+
+use crate::routes::{classify, greeting, not_found, uploads};
 
 mod internal;
 mod routes;
-
-use crate::routes::{classify, greeting, not_found, uploads};
 
 // default run rocket
 #[launch]

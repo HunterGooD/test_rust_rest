@@ -19,7 +19,7 @@ pub async fn hello(name: &str) -> Value {
         })
         .collect();
 
-    let mut items = vec![];
+    let mut items = vec![]; // ready async function group 
     for task in v {
         items.push(task.await.unwrap());
     }
